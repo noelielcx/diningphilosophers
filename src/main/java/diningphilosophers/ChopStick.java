@@ -1,7 +1,13 @@
 package diningphilosophers;
 
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class ChopStick {
 
+    private final Lock verrou = new ReentrantLock();
+    private final Condition disponible = verrou.newCondition();
     private static int stickCount = 0;
     private boolean iAmFree = true;
     private final int myNumber;
